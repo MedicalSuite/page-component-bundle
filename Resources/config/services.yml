@@ -1,0 +1,24 @@
+services:
+  page_component.default_manager:
+    class: Velarde\PageComponentBundle\Service\DefaultPageComponentManager
+    tags:
+      - { name: page_component.manager }
+
+  page_component.manager_container:
+    class: Velarde\PageComponentBundle\Service\PageComponentManagerContainer
+
+  page_component.factory:
+    class: Velarde\PageComponentBundle\Service\PageComponentFactory
+    arguments: ["%page_component.components%"]
+    calls:
+      - [setTwig, ["@twig"]]
+      - [setManagerContainer, ["@page_component.manager_container"]]
+      - [setFormFactory, ["@form.factory"]]
+
+  page_component.twig:
+    class: Velarde\PageComponentBundle\Twig\PageComponentTwigExtension
+    calls:
+      - [setComponentFactory, ["@page_component.factory"]]
+    tags:
+      - { name: twig.extension }
+
