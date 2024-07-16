@@ -1,9 +1,7 @@
 <?php
 namespace Velarde\PageComponentBundle;
 
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilder;
-use Velarde\PageComponentBundle\Service\PageComponentManager;
 
 class PageComponent
 {
