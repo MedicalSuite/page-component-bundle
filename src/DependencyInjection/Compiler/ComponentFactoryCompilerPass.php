@@ -25,12 +25,6 @@ class ComponentFactoryCompilerPass implements CompilerPassInterface
         foreach ($taggedManagers as $id => $tags) {
             $definition->addMethodCall('inject', array($id, new Reference($id)));
         }
-
-        
-
-
-
-
     }
 }
 

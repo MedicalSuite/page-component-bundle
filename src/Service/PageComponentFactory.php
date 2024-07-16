@@ -2,8 +2,6 @@
 
 namespace Velarde\PageComponentBundle\Service;
 
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormFactory;
 use Velarde\PageComponentBundle\Exception\PageComponentException;
 use Velarde\PageComponentBundle\Form\BaseComponentType;
