@@ -2,8 +2,10 @@
 namespace Velarde\PageComponentBundle\Twig;
 
 use Velarde\PageComponentBundle\Service\PageComponentFactory;
+use Twig\TwigFunction;
+use Twig\Extension\AbstractExtension;
 
-class PageComponentTwigExtension extends \Twig_Extension
+class PageComponentTwigExtension extends AbstractExtension
 {
     /**
      * @var PageComponentFactory
@@ -13,7 +15,7 @@ class PageComponentTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('render_component', [$this, 'renderComponent']),
+            new TwigFunction('render_component', [$this, 'renderComponent']),
         ];
     }
 
