@@ -3,6 +3,7 @@
 namespace Velarde\PageComponentBundle\Service;
 
 use Symfony\Component\Form\FormFactory;
+use Twig\Environment;
 use Velarde\PageComponentBundle\Exception\PageComponentException;
 use Velarde\PageComponentBundle\Form\BaseComponentType;
 use Velarde\PageComponentBundle\PageComponent;
@@ -26,7 +27,7 @@ class PageComponentFactory
     private $formFactory;
 
     /**
-     * @var \Twig_Environment
+     * @var Environment
      */
     private $twig;
 
@@ -46,7 +47,7 @@ class PageComponentFactory
         $this->formFactory = $factory;
     }
 
-    public function setTwig(\Twig_Environment $v)
+    public function setTwig(Environment $v)
     {
         $this->twig = $v;
     }

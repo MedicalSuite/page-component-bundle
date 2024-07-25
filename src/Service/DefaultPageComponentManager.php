@@ -2,7 +2,6 @@
 
 namespace Velarde\PageComponentBundle\Service;
 
-
 use Velarde\PageComponentBundle\Exception\PageComponentException;
 use Velarde\PageComponentBundle\PageComponent;
 use Velarde\PageComponentBundle\PageComponentBundle;
