@@ -13,7 +13,7 @@ class ComponentFactoryCompilerPass implements CompilerPassInterface
      *
      * @param ContainerBuilder $container
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has("page_component.manager_container")) {
             return;

@@ -6,13 +6,14 @@ use Velarde\PageComponentBundle\Exception\PageComponentException;
 
 class PageComponentManagerContainer
 {
-    private $managers = [];
+    private array $managers = [];
+
     public function __construct()
     {
         $this->managers = [];
     }
 
-    public function inject($id,  PageComponentManager $manager)
+    public function inject($id, PageComponentManager $manager): void
     {
         $this->managers[$id] = $manager;
     }
@@ -23,14 +24,12 @@ class PageComponentManagerContainer
      *
      * @throws PageComponentException
      */
-    public function get($id)
+    public function get($id): PageComponentManager
     {
         if (!array_key_exists($id, $this->managers)) {
             throw PageComponentException::loadedUnknownManager($id);
         }
 
         return $this->managers[$id];
-
     }
-
 }

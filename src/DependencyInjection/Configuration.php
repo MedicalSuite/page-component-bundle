@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('page_component');
         $rootNode = $treeBuilder->getRootNode();
@@ -29,7 +29,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function buildComponents(ArrayNodeDefinition $node)
+    private function buildComponents(ArrayNodeDefinition $node): void
     {
         $node->children()
 

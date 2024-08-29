@@ -2,18 +2,13 @@
 namespace Velarde\PageComponentBundle;
 
 use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormInterface;
 
 class PageComponent
 {
-    private $raw = [];
-
-    /**
-     * @var FormBuilder
-     */
-    private $formBuilder;
-
+    private array $raw = [];
+    private FormBuilder $formBuilder;
     private $id;
-
     private $processedParameters;
 
     public function __construct($id, array $raw=[])
@@ -27,12 +22,12 @@ class PageComponent
         return $this->id;
     }
 
-    public function getRaw()
+    public function getRaw(): array
     {
         return $this->raw;
     }
 
-    public function setProcessedParameters($data = [])
+    public function setProcessedParameters($data = []): void
     {
         $this->processedParameters = $data;
     }
@@ -43,24 +38,24 @@ class PageComponent
     }
 
 
-    public function setFormBuilder(FormBuilder $builder)
+    public function setFormBuilder(FormBuilder $builder): void
     {
         $this->formBuilder = $builder;
     }
 
-    public function getFormBuilder()
+    public function getFormBuilder(): FormBuilder
     {
         return $this->formBuilder;
     }
 
 
-    public function getForm()
+    public function getForm(): FormInterface
     {
         return $this->formBuilder->getForm();
     }
 
     private $rendered;
-    public function setRendered($v)
+    public function setRendered($v): void
     {
         $this->rendered = $v;
     }

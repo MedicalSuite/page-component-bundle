@@ -13,7 +13,7 @@ class PageComponentBundle extends Bundle
     const KEY_TEMPLATE = "template";
     const KEY_FORM = "form";
 
-    public function build(ContainerBuilder $container)
+    public function build(ContainerBuilder $container): void
     {
         parent::build($container);
         $container->addCompilerPass(new ComponentFactoryCompilerPass());

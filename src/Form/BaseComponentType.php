@@ -12,12 +12,12 @@ class BaseComponentType extends AbstractType
 {
     protected $component;
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->buildComponentForm($builder, $options);
     }
 
-    protected function buildComponentForm(FormBuilderInterface $builder, array $options)
+    protected function buildComponentForm(FormBuilderInterface $builder, array $options): void
     {
         $pageComponent = $options["page_component"];
         if (!$pageComponent instanceof PageComponent){
@@ -33,7 +33,7 @@ class BaseComponentType extends AbstractType
 
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             "page_component" => null
