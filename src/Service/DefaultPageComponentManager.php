@@ -8,7 +8,13 @@ use Velarde\PageComponentBundle\PageComponentBundle;
 
 class DefaultPageComponentManager implements PageComponentManager
 {
-    public function process(PageComponent $pageComponent, array $data = array())
+    /**
+     * @param PageComponent $pageComponent
+     * @param array $data
+     * @return array
+     * @throws PageComponentException
+     */
+    public function process(PageComponent $pageComponent, array $data = array()): array
     {
         $rawParameters = $pageComponent->getRaw()[PageComponentBundle::KEY_PARAMETERS];
 
@@ -18,7 +24,7 @@ class DefaultPageComponentManager implements PageComponentManager
                 throw PageComponentException::requiredComponentParameter($pageComponent->getId(), $key);
             }
 
-            $processedData[$key] = isset($data[$key]) ? $data[$key] : $config["default"];
+            $processedData[$key] = $data[$key] ?? $config["default"];
         }
         $pageComponent->setProcessedParameters($processedData);
 

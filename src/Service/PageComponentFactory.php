@@ -16,20 +16,10 @@ class PageComponentFactory
 
     private $rawComponents;
 
-    /**
-     * @var PageComponentManagerContainer
-     */
-    private $managerContainer;
+    private PageComponentManagerContainer $managerContainer;
 
-    /**
-     * @var FormFactory
-     */
-    private $formFactory;
-
-    /**
-     * @var Environment
-     */
-    private $twig;
+    private FormFactory $formFactory;
+    private Environment $twig;
 
     public function __construct($components)
     {
@@ -37,17 +27,17 @@ class PageComponentFactory
 
     }
 
-    public function setManagerContainer(PageComponentManagerContainer $container)
+    public function setManagerContainer(PageComponentManagerContainer $container): void
     {
         $this->managerContainer = $container;
     }
 
-    public function setFormFactory($factory)
+    public function setFormFactory($factory): void
     {
         $this->formFactory = $factory;
     }
 
-    public function setTwig(Environment $v)
+    public function setTwig(Environment $v): void
     {
         $this->twig = $v;
     }
@@ -55,12 +45,12 @@ class PageComponentFactory
 
     /**
      * @param $componentId
-     * @param array $componentData
+     * @param array $data
      * @param array $options
      * @return PageComponent
      * @throws PageComponentException
      */
-    public function load($componentId, array $data = [], array $options=array())
+    public function load($componentId, array $data = [], array $options=array()): PageComponent
     {
         $defaultOptions = [
             self::LOAD_WITH_FORM_OPTION => true,
@@ -86,7 +76,6 @@ class PageComponentFactory
         // with_form option passed, build the component form
         if ($options[self::LOAD_WITH_FORM_OPTION]) {
             $this->buildComponentForm($pageComponent);
-
         }
 
         // rendered option passed, build the component view
@@ -97,7 +86,7 @@ class PageComponentFactory
         return $pageComponent;
     }
 
-    private function buildComponentForm(PageComponent $component)
+    private function buildComponentForm(PageComponent $component): void
     {
         $componentFormClass = $component->getRaw()[PageComponentBundle::KEY_FORM];
         $formOptions = [];
@@ -116,7 +105,7 @@ class PageComponentFactory
         $component->setFormBuilder($builder);
     }
 
-    private function buildComponentView(PageComponent $component)
+    private function buildComponentView(PageComponent $component): void
     {
         $template = $component->getRaw()[PageComponentBundle::KEY_TEMPLATE];
         $component->setRendered($this->twig->render($template, $component->getProcessedParameters()));
